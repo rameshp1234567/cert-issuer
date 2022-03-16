@@ -1,4 +1,5 @@
 kubectl create namespace cert-manager
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/cloud/deploy.yaml
 kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.12.0/cert-manager.yaml
 kubectl get ns
 kubectl get pods --namespace cert-manager
