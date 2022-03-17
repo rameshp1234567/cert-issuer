@@ -19,7 +19,7 @@ metadata:
   name: selfsigned-cert
   namespace: hello
 spec:
-  commonName: helloworldsdemo.com
+  commonName: helloworlds.eastus.cloudapp.azure.com
   secretName: selfsigned-cert-tls
   issuerRef:
     name: test-selfsigned
@@ -38,10 +38,10 @@ metadata:
 spec:
   tls:
   - hosts: 
-    - helloworldsdemo.com
+    - helloworlds.eastus.cloudapp.azure.com
     secretName: selfsigned-cert-tls
   rules:
-  - host: helloworldsdemo.com
+  - host: helloworlds.eastus.cloudapp.azure.com
     http:
       paths:
       - path: /
