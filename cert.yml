@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: hotel
+  name: hello
 
 ---
 
@@ -9,7 +9,7 @@ apiVersion: cert-manager.io/v1alpha2
 kind: Issuer
 metadata:
   name: test-selfsigned
-  namespace: hotel
+  namespace: hello
 spec:
   selfSigned: {}
 ---
@@ -17,9 +17,9 @@ apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
   name: selfsigned-cert
-  namespace: hotel
+  namespace: hello
 spec:
-  commonName: hotel.example.com
+  commonName: helloworlds.example.com
   secretName: selfsigned-cert-tls
   issuerRef:
     name: test-selfsigned
@@ -28,8 +28,8 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: hotel-ingress
-  namespace: hotel
+  name: hello-ingress
+  namespace: hello
   annotations:
     kubernetes.io/ingress.class: "nginx"
     ingress.kubernetes.io/ssl-redirect: "true"
@@ -38,15 +38,15 @@ metadata:
 spec:
   tls:
   - hosts: 
-    - hotel.example.com
+    - helloworlds.example.com
     secretName: selfsigned-cert-tls
   rules:
-  - host: hotel.example.com 
+  - host: helloworlds.example.com 
     http:
       paths:
       - path: /
         backend:
-          serviceName: hotel-svc
+          serviceName: hello-svc
           servicePort: 80
         
 ---
@@ -54,20 +54,20 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hotel
-  namespace: hotel
+  name: hello
+  namespace: hello
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: hotel
+      app: hello
   template:
     metadata:
       labels:
-        app: hotel
+        app: hello
     spec:
       containers:
-      - name: hotel
+      - name: hello
         image: nginxdemos/hello:plain-text
         ports:
         - containerPort: 80
@@ -76,8 +76,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: hotel-svc
-  namespace: hotel
+  name: hello-svc
+  namespace: hello
 spec:
   ports:
   - port: 80
@@ -85,4 +85,4 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app: hotel
+    app: hello
