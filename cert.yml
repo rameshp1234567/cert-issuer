@@ -19,7 +19,7 @@ metadata:
   name: selfsigned-cert
   namespace: hello
 spec:
-  commonName: helloworlds.example.com
+  commonName: helloworldsdemo.com
   secretName: selfsigned-cert-tls
   issuerRef:
     name: test-selfsigned
@@ -38,10 +38,10 @@ metadata:
 spec:
   tls:
   - hosts: 
-    - helloworlds.example.com
+    - helloworldsdemo.com
     secretName: selfsigned-cert-tls
   rules:
-  - host: helloworlds.example.com 
+  - host: helloworldsdemo.com
     http:
       paths:
       - path: /
