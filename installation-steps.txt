@@ -4,7 +4,7 @@ kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/relea
 kubectl get ns
 kubectl get pods --namespace cert-manager
 kubectl get all --namespace cert-manager
-kubectl apply -f cert1.yml
+kubectl apply -f cert.yml
 kubectl get all --namespace hello
 kubectl get certificate -n hello
 kubectl describe certificate -n hello
