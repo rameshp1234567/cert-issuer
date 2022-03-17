@@ -8,3 +8,4 @@ kubectl apply -f cert1.yml
 kubectl get all --namespace hello
 kubectl get certificate -n hello
 kubectl describe certificate -n hello
+kubectl get svc -n ingress-nginx
