@@ -1,10 +1,10 @@
-kubectl create namespace cert-manager
+kubectl create namespace certmngr
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.1/deploy/static/provider/cloud/deploy.yaml
 kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.12.0/cert-manager.yaml
 kubectl get ns
-kubectl get pods --namespace cert-manager
-kubectl get all --namespace cert-manager
+kubectl get pods --namespace certmngr
+kubectl get all --namespace certmngr
 kubectl apply -f cert1.yml
-kubectl get all --namespace hotel
-kubectl get certificate -n hotel
-kubectl describe certificate -n hotel
+kubectl get all --namespace hello
+kubectl get certificate -n hello
+kubectl describe certificate -n hello
