@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hello-ingress
+  namespace: hello
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+spec:
+  tls:
+  - hosts: 
+    - helloworldsdemo.com
+    secretName: selfsigned-cert-tls
+  rules:
+  - host: helloworldsdemo.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: hello-svc
+          servicePort: 80
